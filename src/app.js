@@ -110,30 +110,55 @@
 
 // app.listen(4000, () => console.log("server is running on http://localhost:4000"));
 
+// import express from "express";
+// const app = express();
+
+// app.use("/", (req,res) => {
+//     res.send("this is for all routes includinf /user");
+// });
+// app.get("/user", (req,res) => {
+//     res.send({name: "steven smith", prof: "cricketer"});
+// });
+
+// app.post("/user", (req,res) =>  {
+//     res.send({name: "walter white", prof: "chemist"});
+// });
+
+// app.put("/user", (req,res) => {
+//     res.send({name: "eliot alderson", prof: "vigilante hacker"});
+// });
+
+// app.patch("/user", (req,res) => {
+//     res.send("this is the patch method to the user");
+// });
+
+// app.delete("/user", (req,res) => {
+//     res.send("user data deleted successfully");
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
 import express from "express";
 const app = express();
 
-app.use("/user", (req,res) => {
-    res.send("this is for all routes includinf /user");
-});
-app.get("/user", (req,res) => {
-    res.send({name: "steven smith", prof: "cricketer"});
-});
-
-app.post("/user", (req,res) =>  {
+app.get("/data", (req,res) => {
     res.send({name: "walter white", prof: "chemist"});
 });
 
-app.put("/user", (req,res) => {
-    res.send({name: "eliot alderson", prof: "vigilante hacker"});
+app.post("/data", (req,res) => {
+    res.send({name: "steve smith", prof: "cricketer"});
 });
 
-app.patch("/user", (req,res) => {
-    res.send("this is the patch method to the user");
+app.patch("/data", (req,res) => {
+    res.send({name: "benstokes", prof: "cricketer"});
 });
 
-app.delete("/user", (req,res) => {
-    res.send("user data deleted successfully");
+app.put("/data", (req,res) => {
+    res.send({name: "max verstappen", prof: "f1 driver"});
+});
+
+app.delete("/data", (req,res) =>  {
+    res.send("data deleted successfully");
 });
 
 app.listen(4000, () => console.log("server is running on http://localhost:4000"));
