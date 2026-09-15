@@ -17,3 +17,7 @@
 - Play with routes and route extensions ex: /hello , /hello2, /xyz etc
 - Order of routes matters a lot
 - Write Logic to handle GET, POST, DELETE, PATCH API calls and test them on postman
+- Explore req.params, req.query, dynamic routes in express js and how all these works under the hood? uses? process? etc.
+- Explore routing and use of ?, +, (), * in the routes
+- Use of regex in routes /a/, /.*fly$/ 
+- Explore and read all topics in express.js documentation
