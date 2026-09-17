@@ -272,15 +272,227 @@
 
 // app.listen(4000, () => console.log("server is running on http://localhost:4000"));
 
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res) => {
+//     res.send("this  is the homepage");
+// });
+
+// app.get(/^\/ab+c/, (req,res) => {
+//     res.send({name: "steven smith", prof: "cricketer"});
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res) =>{
+//     console.log("this is the homepage handler\n");
+//     res.send("this is the homepage route\n");
+// });
+// app.get("/user", (req,res,next) => {
+//     console.log("this is the user handler1\n");
+//     // res.send("this is the user route1");
+//     next();
+// },(req,res,next) => {
+//     console.log("this is the user handler 2\n");
+//     next();
+// },(req,res,next) =>{
+//     console.log("this is the user handler 3\n");
+//     next();
+// },(req,res,next) =>{
+//     console.log("this is the user handler 4\n");
+//     res.send("this is the final user route");
+//     next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("this is the user handler1\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("this is the user handler2\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("this is the user handler3\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("this is the user handler4\n");
+//     res.send("this is the final user route\n");
+//     next();
+// });
+// app.use("/demo", (req,res) => {
+
+// });
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res) => {
+//     res.send("this is the homepage");
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("this is the handler1\n");
+//     // res.send("response1");
+//     next();
+// },(req,res,next) => {
+//     console.log("this is the handler2\n");
+//     next();
+//     // res.send("response2");
+// },(req,res,next) =>{
+//     console.log("this is the handler3\n");
+//     // res.send("response3");
+//     // next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("handler1\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("handler2\n");
+//     // next();
+//     res.send("response2\n");
+// },(req,res,next) => {
+//     console.log("handler3\n");
+//     // res.send("response3");
+//     next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("handler1\n");
+//     next();
+//     // res.send("response1\n");
+// },(req,res,next) => {
+//     console.log("handler2\n");
+//     // res.send("response2\n");
+// },(req,res,next) => {
+//     console.log("handler3\n");
+//     res.send("Response3");
+//     next();
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// const express = require("express");
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res) => {
+//     res.send("this is the homepage");
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("handler1\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("handler2\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("handler3\n");
+//     res.send("response3\n");
+//     next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("handler1\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("handler2\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("handler3\n");
+//     res.send("response3");
+//     next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("handler1\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("handler2\n");
+//     res.send("Response2");
+// },(req,res,next) => {
+//     console.log("handler3");
+//     res.send("response3");
+// },(req,res,next) => {
+//     console.log("handler4");
+//     res.send("response4");
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res) => {
+//     res.send("this is the homepage");
+// });
+
+// app.get("/user", 
+//     [(req,res,next) => {
+//         console.log("handler1\n");
+//         next();
+//     },
+//     (req,res,next) =>{
+//         console.log("handler2\n");
+//         next();
+//     },
+//     (req,res,next) => {
+//         console.log("handler3\n");
+//         next();
+//     }],
+//     (req,res,next) =>{
+//         console.log("handler\n");
+//         next();
+//     },
+//     (req,res,next) => {
+//         console.log("handler5\n");
+//         res.send("final destination\n");
+//     }
+// );
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
 import express from "express";
 const app = express();
 
-app.get("/", (req,res) => {
-    res.send("this  is the homepage");
+app.get("/", (req,res,next) => {
+    res.send("this is the homepage");
 });
 
-app.get(/^\/ab+c/, (req,res) => {
-    res.send({name: "steven smith", prof: "cricketer"});
-});
+let hand1 = (req,res,next) => {
+    console.log("this is the handler1\n");
+    next();
+};
+
+let hand2 = (req,res,next) => {
+    console.log("this is the handler2\n");
+    next();
+};
+
+let hand3 = (req,res,next) => {
+    console.log("this is the handler3\n");
+    next();
+};
+
+let hand4 = (req,res,next) => {
+    console.log("this is the handler\n");
+    next();
+};
+
+let hand5 = (req,res,next) => {
+    console.log("this is the handler5\n");
+    res.send("this is the final destination\n");
+    next();
+};
+
+// app.get("/demo", hand1,hand2,hand3,hand4,hand5);
+
+// app.get("/demo", [hand1,hand2,hand4],hand3,hand5);
+
+app.get("/demo", [hand1,hand2,hand3,hand4,hand5]);
 
 app.listen(4000, () => console.log("server is running on http://localhost:4000"));
