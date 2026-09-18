@@ -21,3 +21,9 @@
 - Explore routing and use of ?, +, (), * in the routes
 - Use of regex in routes /a/, /.*fly$/ 
 - Explore and read all topics in express.js documentation
+
+- what is a middleware? why do we need it?
+- How express.js basically handles request behind the sences? under the hood process?
+- Difference between app.use() and app.all() read more about this and uses and under the hood functionalities?
+- Write a dummy auth middleware for admin
+- Write a dummy auth middleware for user routes except /user/login

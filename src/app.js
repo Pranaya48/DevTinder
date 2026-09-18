@@ -456,43 +456,330 @@
 
 // app.listen(4000, () => console.log("server is running on http://localhost:4000"));
 
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res,next) => {
+//     res.send("this is the homepage");
+// });
+
+// let hand1 = (req,res,next) => {
+//     console.log("this is the handler1\n");
+//     next();
+// };
+
+// let hand2 = (req,res,next) => {
+//     console.log("this is the handler2\n");
+//     next();
+// };
+
+// let hand3 = (req,res,next) => {
+//     console.log("this is the handler3\n");
+//     next();
+// };
+
+// let hand4 = (req,res,next) => {
+//     console.log("this is the handler\n");
+//     next();
+// };
+
+// let hand5 = (req,res,next) => {
+//     console.log("this is the handler5\n");
+//     res.send("this is the final destination\n");
+//     next();
+// };
+
+// // app.get("/demo", hand1,hand2,hand3,hand4,hand5);
+
+// // app.get("/demo", [hand1,hand2,hand4],hand3,hand5);
+
+// app.get("/demo", [hand1,hand2,hand3,hand4,hand5]);
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res) => {
+//     res.send("this is the homepage");
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("user handler1\n");
+//     next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("this handler2\n");
+//     next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("this hhandler3\n");
+//     next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("this handler4\n");
+//     res.send("this is the final destination\n");
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res,next) => {
+//     res.send("this is the homepage");
+// });
+
+// app.get("/demo", (req,res,next) => {
+//     console.log("this is the handler1\n");
+//     next();
+// });
+// app.get("/demo", (req,res,next) => {
+//     console.log("this is the handler2\n");
+//     res.send("this is the final destination\n");
+//     next();
+// });
+// app.get("/user", (req,res,next) => {
+//     console.log("this is the handler3\n");
+//     next();
+// })
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res,next) => {
+//     res.send("this is the homepage");
+// });
+
+// app.get("/demo", (req,res,next) =>{
+//     console.log("this is the demo handler2\n");
+//     res.send("this is the final destination");
+//     next();
+// });
+// app.get("/demo", (req,res,next) => {
+//     console.log("this is the demo handler1\n");
+//     next();
+// });
+
+// app.get("/demo", (req,res,next) => {
+//     console.log("this is the handler1\n");
+//     next();
+// });
+// app.get("/demo", (req,res,next) => {
+//     console.log("this is the handler2\n");
+//     res.send("this is the final destination1\n");
+//     next();
+// });
+// app.get("/demo", (req,res,next) => {
+//     console.log("this is the handler2\n");
+//     res.send("this is the final  destination2\n");
+// });
+
+// app.get("/demo", (req,res,next) => {
+//     console.log("this is the handler1\n");
+//     res.send("this is the first destination");
+//     // next();
+// });
+// app.get("/demo", (req,res,next) => {
+//     console.log("this is the handler2\n");
+//     res.send("this is the final destination");
+// });
+
+// app.get("/demo", (req,res,next) => {
+//     console.log("handler1\n");
+//     next();
+// });
+// app.get("/demo", (req,res,next) => {
+//     console.log("handler2\n");
+// });
+
+// app.get("/demo", (req,res,next) => {
+//     res.send("this is the end");
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.use("/", (req,res,next) => {
+//     console.log("this is the / route handler\n");
+//     next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("user handler1\n");
+//     next();
+// },(req,res,next) =>{
+//     console.log("user handler2\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("user handler3\n");
+//     res.send("the 1st destination");
+// },(req,res,next) => {
+//     console.log("user handler4\n");
+//     res.send("Final destination");
+// });
+
+// app.listen(4000,() => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.use("/", (req,res,next) => {
+//     console.log("this is the middleware\n");
+//     // next();
+// });
+
+// app.get("/user", (req,res,next) => {
+//     console.log("this is the handler1\n");
+//     next();
+// },(req,res,next) => {
+//     console.log("this is the handler2\n");
+//     res.send("response");
+// });
+
+// app.listen(4000,() => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.use("/admin", (req,res,next) => {
+//     let token = "adminabc" //it should comes from req?.body.token 
+//     let isAdmin = token === "adminabc";
+//     if(!isAdmin) {
+//         res.send(401).send("You are not an admin");
+//     }else {
+//         next();
+//     };
+// });
+
+// app.get("/admin/getAllData", (req,res,next) => {
+//     res.send("all data fetched by the Admin");
+// });
+
+// app.post("/admin/addData", (req,res,next) => {
+//     res.send("added data by the admin");
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res,next) => {
+//     res.send("this is the homepage");
+// });
+
+// app.use("/admin", (req,res,next) => {
+//     let token = "adminabc";
+//     let valid = token === "adminabc";
+//     if(!valid) {
+//         res.status(401).send("Admin is not Authorized!!\n");
+//     };
+//     next();
+//     console.log("admin middleware is running\n");
+// });
+
+// app.use("/user", (req,res,next) => {
+//     let token = "userabc";
+//     let valid = token === "userabcd";
+//     if(!valid) {
+//         res.status(401).send("user is not authenticated\n");
+//     };
+//     next();
+//     console.log("user middleware is running\n");
+// });
+
+// app.get("/", (req,res,next) => {
+//     res.send("this  is the homepage\n");
+// });
+
+// app.get("/admin/data", (req,res,next) => {
+//     res.send("fetching data by the admin\n");
+// });
+
+// app.post("/admin/add", (req,res,next) =>{
+//     res.send("adding new data by the admin\n");
+// });
+
+// app.put("/admin/update", (req,res,next) => {
+//     res.send("updating data by the admin\n");
+// });
+
+// app.delete("/admin/delete", (req,res,next) => {
+//     res.send("deleting data by the admin\n");
+// });
+
+// app.get("/user/data", (req,res,next) => {
+//     res.send("fetching data by the user\n");
+// });
+
+// app.post("/user/add", (req,res,next) => {
+//     res.send("adding data by the user\n");
+// });
+
+// app.put("/user/update", (req,res,next) => {
+//     res.send("updating data by the user\n");
+// });
+
+// app.delete("/user/delete", (req,res,next) => {
+//     res.send("deleting data by the user\n");
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
 import express from "express";
 const app = express();
+import {user, admin} from "../middleware/auth.js";
 
 app.get("/", (req,res,next) => {
-    res.send("this is the homepage");
+    res.send("this is the homepage\n");
 });
 
-let hand1 = (req,res,next) => {
-    console.log("this is the handler1\n");
-    next();
-};
+app.get("/user/data", user, (req,res,next) => {
+    res.send("fetching data by the user\n");
+});
 
-let hand2 = (req,res,next) => {
-    console.log("this is the handler2\n");
-    next();
-};
+app.post("/user/add", user, (req,res,next) => {
+    res.send("adding data by the user\n");
+});
 
-let hand3 = (req,res,next) => {
-    console.log("this is the handler3\n");
-    next();
-};
+app.put("/user/update", user, (req,res,next) => {
+    res.send("updating data by the user\n");
+});
 
-let hand4 = (req,res,next) => {
-    console.log("this is the handler\n");
-    next();
-};
+app.patch("/user/patch", user, (req,res,next) => {
+    res.send("patching data by the user");
+});
 
-let hand5 = (req,res,next) => {
-    console.log("this is the handler5\n");
-    res.send("this is the final destination\n");
-    next();
-};
+app.delete("/user/delete", user, (req,res,next) =>{
+    res.send("deleting data by the user");
+});
 
-// app.get("/demo", hand1,hand2,hand3,hand4,hand5);
+app.get("/admin/data", admin, (req,res,next) => {
+    res.send("fetching data by the admin");
+});
 
-// app.get("/demo", [hand1,hand2,hand4],hand3,hand5);
+app.post("/admin/add", admin, (req,res,next) => {
+    res.send("adding data by the admin\n");
+});
 
-app.get("/demo", [hand1,hand2,hand3,hand4,hand5]);
+app.put("/admin/update", admin, (req,res,next) => {
+    res.send("updating data by the admin");
+});
+
+app.patch("/admin/patch", admin, (req,res,next) => {
+    res.send("patching data by the admin");
+});
+
+app.delete("/admin/delete", admin, (req,res,next) => {
+    res.send("deleting data by the admin");
+});
 
 app.listen(4000, () => console.log("server is running on http://localhost:4000"));
