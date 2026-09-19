@@ -734,52 +734,160 @@
 
 // app.listen(4000, () => console.log("server is running on http://localhost:4000"));
 
+// import express from "express";
+// const app = express();
+// import {user, admin} from "../middleware/auth.js";
+
+// app.get("/", (req,res,next) => {
+//     res.send("this is the homepage\n");
+// });
+
+// app.get("/user/data", user, (req,res,next) => {
+//     res.send("fetching data by the user\n");
+// });
+
+// app.post("/user/add", user, (req,res,next) => {
+//     res.send("adding data by the user\n");
+// });
+
+// app.put("/user/update", user, (req,res,next) => {
+//     res.send("updating data by the user\n");
+// });
+
+// app.patch("/user/patch", user, (req,res,next) => {
+//     res.send("patching data by the user");
+// });
+
+// app.delete("/user/delete", user, (req,res,next) =>{
+//     res.send("deleting data by the user");
+// });
+
+// app.get("/admin/data", admin, (req,res,next) => {
+//     res.send("fetching data by the admin");
+// });
+
+// app.post("/admin/add", admin, (req,res,next) => {
+//     res.send("adding data by the admin\n");
+// });
+
+// app.put("/admin/update", admin, (req,res,next) => {
+//     res.send("updating data by the admin");
+// });
+
+// app.patch("/admin/patch", admin, (req,res,next) => {
+//     res.send("patching data by the admin");
+// });
+
+// app.delete("/admin/delete", admin, (req,res,next) => {
+//     res.send("deleting data by the admin");
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res) => {
+//     res.send("this is the homepage");
+// });
+
+// // app.get("/user/data", (req,res,next) => {
+// //     throw new Error("Random Demo error!!");
+// //     res.status(500).send("error contact support team");
+// // });
+// // app.use("/", (err, req, res, next) => {
+// //     if(err) {
+// //         res.status(500).send("something went wrong!!1");
+// //     };
+// // });
+// // app.get("/user/data", (req,res,next) =>{
+// //     try{
+// //         throw new Error("something went wrong!!");
+// //     }catch(err) {
+// //         res.status(500).send("error occured contact the support team!");
+// //     };
+// // });
+
+// app.get("/user/data", (req,res,next) => {
+//     throw new Error("error!! contact the support team!");
+//     res.status(500).send("contact the  support team!");
+// });
+// app.use("/", (err, req, res, next) => {
+//     if(err) {
+//         res.status(500).send("something went wrong!2");
+//     };
+// });
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res,next) => {
+//     res.send("this is the homepage\n");
+// });
+
+// app.post("/order", (req,res,next) => {
+//     try{
+//         throw new Error("this order can not be placed\n");
+//     }catch(err) {
+//         res.status(500).send(err.message);
+//     }
+// });
+
+// app.put("/logs", (req,res,next) => {
+//     try{
+//         throw new Error("this logs can not be updated\n");
+//     }catch(err) {
+//         next(err);
+//     }
+// });
+
+// app.patch("/profile", (req,res,next) => {
+//     try{
+//         throw new Error("this profile can not be replaced\n");
+//     }catch(err) {
+//         next(err);
+//     }
+// });
+
+// app.delete("/posts", (req,res,next) => {
+//     try{
+//         throw new Error("these post can not be deleted\n");
+//     }catch(err) {
+//         res.status(500).send(err.message);
+//     }
+// });
+
+// app.use("/", (err,req,res,next) => {
+//     console.log(err.message);
+//     res.status(500).send(err.message);
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
 import express from "express";
 const app = express();
-import {user, admin} from "../middleware/auth.js";
 
 app.get("/", (req,res,next) => {
     res.send("this is the homepage\n");
 });
 
-app.get("/user/data", user, (req,res,next) => {
-    res.send("fetching data by the user\n");
+app.use("/", (err,req,res,next) => {
+    console.error(err.message);
+    res.status(500).send(err.message);
 });
 
-app.post("/user/add", user, (req,res,next) => {
-    res.send("adding data by the user\n");
+app.get("/user", (req,res,next) => {
+    try{
+        throw new Error("something went wrong");
+    }catch(err) {
+        next(err);
+    }
 });
 
-app.put("/user/update", user, (req,res,next) => {
-    res.send("updating data by the user\n");
-});
-
-app.patch("/user/patch", user, (req,res,next) => {
-    res.send("patching data by the user");
-});
-
-app.delete("/user/delete", user, (req,res,next) =>{
-    res.send("deleting data by the user");
-});
-
-app.get("/admin/data", admin, (req,res,next) => {
-    res.send("fetching data by the admin");
-});
-
-app.post("/admin/add", admin, (req,res,next) => {
-    res.send("adding data by the admin\n");
-});
-
-app.put("/admin/update", admin, (req,res,next) => {
-    res.send("updating data by the admin");
-});
-
-app.patch("/admin/patch", admin, (req,res,next) => {
-    res.send("patching data by the admin");
-});
-
-app.delete("/admin/delete", admin, (req,res,next) => {
-    res.send("deleting data by the admin");
+app.use("/", (err,req,res,next) => {
+    console.error(err.message);
+    res.status(500).send(err.message);
 });
 
 app.listen(4000, () => console.log("server is running on http://localhost:4000"));
