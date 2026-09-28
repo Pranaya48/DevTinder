@@ -29,3 +29,12 @@
 - Write a dummy auth middleware for user routes except /user/login
 - Error handling using app.use("/", (err,req,res,next) => {}) 
 - Error handling using try catch
+
+- Create a free cluster on mongodb official website (mongoodb atlas)
+- Install mongoose library
+- Connect your application to the Database "connectURI"/devTinder
+- Call the connectDB() function and connect to the database before starting the server/application on port 4000
+- Create a userSchema & user model
+- Create POST /signup api to add data to the database
+- Push some data to the database by doing API calls from postman
+- Error handling using try catch

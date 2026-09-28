@@ -865,29 +865,88 @@
 
 // app.listen(4000, () => console.log("server is running on http://localhost:4000"));
 
+// import express from "express";
+// const app = express();
+
+// app.get("/", (req,res,next) => {
+//     res.send("this is the homepage\n");
+// });
+
+// app.use("/", (err,req,res,next) => {
+//     console.error(err.message);
+//     res.status(500).send(err.message);
+// });
+
+// app.get("/user", (req,res,next) => {
+//     try{
+//         throw new Error("something went wrong");
+//     }catch(err) {
+//         next(err);
+//     }
+// });
+
+// app.use("/", (err,req,res,next) => {
+//     console.error(err.message);
+//     res.status(500).send(err.message);
+// });
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+// import connectDB from "./config/db.js";
+
+// app.get("/", (req,res) => {
+//     res.send("this is the homepage!!");
+// });
+
+// connectDB();
+
+// app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
+// import express from "express";
+// const app = express();
+// import connectDB from "./config/db.js";
+
+// app.get("/", (req,res) => {
+//     res.send("this is the homepage!!");
+// });
+
+// connectDB().then(() => {
+//     console.log("connection successfully established!!");
+//     app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+// }).catch(err => console.log("failed to connect!! ",err.message));
+
+// // app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+
 import express from "express";
 const app = express();
+import { connectDB } from "./config/db.js";
+import User from "./model/user.js";
 
 app.get("/", (req,res,next) => {
-    res.send("this is the homepage\n");
+    res.send("this is the homepage");
 });
-
-app.use("/", (err,req,res,next) => {
-    console.error(err.message);
-    res.status(500).send(err.message);
-});
-
-app.get("/user", (req,res,next) => {
+app.post("/signup", async(req,res) => {
+    const user = new User({
+        firstName: "home",
+        lastName: "lander",
+        emailId: "home@lander.com",
+        password: "home@land",
+        age: 44,
+        gender: "male"
+    });
     try{
-        throw new Error("something went wrong");
+        await user.save();
+        console.log(user);
+        console.log("new document created!!");
+        res.status(201).json({user});
     }catch(err) {
-        next(err);
-    }
+        console.error("failed to save the data",err.message);
+        res.status(500).json({msg: "failed to save the data", msg1: err.message});
+    };
 });
-
-app.use("/", (err,req,res,next) => {
-    console.error(err.message);
-    res.status(500).send(err.message);
-});
-
-app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+connectDB().then(() => {
+    console.log("sucessfully connected to the database!!");
+    app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+}).catch(err => console.log("failed to connect to the database!! ",err.message));
