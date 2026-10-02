@@ -919,34 +919,83 @@
 
 // // app.listen(4000, () => console.log("server is running on http://localhost:4000"));
 
+// import express from "express";
+// const app = express();
+// import { connectDB } from "./config/db.js";
+// import User from "./model/user.js";
+// // app.use(express.json());
+// app.get("/", (req,res,next) => {
+//     res.send("this is the homepage");
+// });
+// // app.post("/signup", async(req,res) => {
+// //     const user = new User({
+// //         firstName: "home",
+// //         lastName: "lander",
+// //         emailId: "home@lander.com",
+// //         password: "home@land",
+// //         age: 44,
+// //         gender: "male"
+// //     });
+// //     try{
+// //         await user.save();
+// //         console.log(user);
+// //         console.log("new document created!!");
+// //         res.status(201).json({user});
+// //     }catch(err) {
+// //         console.error("failed to save the data",err.message);
+// //         res.status(500).json({msg: "failed to save the data", msg1: err.message});
+// //     };
+// // });
+// // app.post("/user", async(req,res,next) => {
+// //     const man = new User(req.body);
+// //     try{
+// //         await man.save();
+// //         console.log("successfully saved to the database!!");
+// //         console.log(man);
+// //     }catch(err) {
+// //         console.error(err.message);
+// //     }
+// // });
+
+// app.post("/user", async(req,res,next) => {
+//     const man = new User(req.body);
+//     try{
+//         await man.save();
+//         console.log("data saved successfully");
+//         res.status(201).json(man);
+//     }catch(err) {
+//         console.error("failed to save the data to the database!!");
+//         res.status(500).json({msg: err.message});
+//     }
+// });
+// connectDB().then(() => {
+//     console.log("sucessfully connected to the database!!");
+//     app.listen(4000, () => console.log("server is running on http://localhost:4000"));
+// }).catch(err => console.log("failed to connect to the database!! ",err.message));
+
 import express from "express";
 const app = express();
 import { connectDB } from "./config/db.js";
 import User from "./model/user.js";
 
+app.use(express.json());
 app.get("/", (req,res,next) => {
-    res.send("this is the homepage");
+    res.send("this  is the homepage");
 });
-app.post("/signup", async(req,res) => {
-    const user = new User({
-        firstName: "home",
-        lastName: "lander",
-        emailId: "home@lander.com",
-        password: "home@land",
-        age: 44,
-        gender: "male"
-    });
+
+app.post("/user", async(req,res,next) => {
+    let data = new User(req.body);
     try{
-        await user.save();
-        console.log(user);
-        console.log("new document created!!");
-        res.status(201).json({user});
+        await data.save();
+        console.log(data);
+        res.status(201).json(data);
     }catch(err) {
-        console.error("failed to save the data",err.message);
-        res.status(500).json({msg: "failed to save the data", msg1: err.message});
-    };
+        console.log("failed to send  the data ",err.message);
+        res.status(500).json({msg: err.message});
+    }
 });
+
 connectDB().then(() => {
-    console.log("sucessfully connected to the database!!");
+    console.log("successfully connected to the database!!");
     app.listen(4000, () => console.log("server is running on http://localhost:4000"));
-}).catch(err => console.log("failed to connect to the database!! ",err.message));
+}).catch(err => console.error("can not connect to the database!! ",err.message));
