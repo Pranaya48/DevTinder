@@ -65,3 +65,9 @@
 - Explore validator library function and use validator functions for Password, url validation and Email validation 
 - Explore the validator library (documentation) more functionalities 
 - Never trust req.body (always keep validation)
+
+- Validate data in signup API
+- Install bcrypt package
+- create password hash using the bcrypt.hash and save the user with encrypted password
+- create login API
+- Compare password and throw errors if email and password is invalid

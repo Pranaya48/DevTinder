@@ -53,6 +53,116 @@
 // export const User = mongoose.model("User", userSchema);
 // export default User;
 
+// import mongoose from "mongoose";
+// import validator from "validator";
+
+// const noSpace = (value) => {return !value.includes(" ")};
+// const userSchema = new mongoose.Schema({
+//     firstName: {
+//         type: String,
+//         required: [true, "firstName is required!!"],
+//         trim: true,
+//         minLength: 4,
+//         maxLength: 15,
+//         validate: {
+//             validator: noSpace,
+//             message: "no spaces are allowed"
+//         }
+//     },
+//     lastName: {
+//         type: String,
+//         required: [true, "lastName is required!!"],
+//         trim: true,
+//         minLength: 4,
+//         maxLength: 15,
+//         validate: {
+//             validator: noSpace,
+//             message: "no spaces are allowed!!"
+//         }
+//     },
+//     emailId: {
+//         type: String,
+//         required: [true, "emailId are required!!"],
+//         trim: true,
+//         unique: [true, "email already exists"],
+//         validate: [{
+//             validator: noSpace,
+//             message: "no spaces are allowed!!"
+//         },{
+//             validator: function(value) {
+//                 if(!validator.isEmail(value)) {
+//                     throw new Error("Email is not valid Email!!");
+//                 }
+//             },
+//             message: "Email is not a Valid Email!!"
+//         }]
+//     },
+//     password: {
+//         type: String,
+//         required: [true, "password is required!!"],
+//         trim: true,
+//         validate: [
+//             {validator: noSpace, message: "no spaces are allowed!!"},
+//             {validator: function(value){
+//                 const hasLower = /[a-z]/.test(value);
+//                 const hasUpper = /[A-Z]/.test(value);
+//                 const hasNumber = /[0-9]/.test(value);
+//                 return hasLower && hasUpper && hasNumber;
+//             }, message: "password must contain a lowercase and uppercase and a number character!!"},
+//             {validator: function(value) {
+//                 if(!validator.isStrongPassword(value)) {
+//                     throw new Error("Password is not strong!!")
+//                 }
+//             },
+//             message: "Password is not Strong!!"
+//         }
+//         ]
+//     },
+//     age: {
+//         type: Number,
+//         required: true,
+//         min: 18,
+//         max: 80,
+//         validate: {
+//             validator: function(age) {
+//                 return age > 18  && age < 80;
+//             },
+//             message: "age must be greater than 18 and smaller than 80"
+//         }
+//     },
+//     gender: {
+//         type: String,
+//         required: true,
+//         enum: ["male", "female", "others"],
+//         validate: {
+//             validator: function(value) {
+//                 const values = ["male", "female", "others"];
+//                 return values.includes(value);
+//             },
+//             message: "age must be male or female or others"
+//         }
+//     },
+//     about: {
+//         type: String,
+//         default: "i am the batman and men are brave!!"
+//     },
+//     profilePic: {
+//         type: String,
+//         default: "https://images.unsplash.com/photo-1763539818973-ffc4d0a78dae?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+//         validate(value) {
+//             if(!validator.isURL(value)) {
+//                 throw new Error("url is not valid");
+//             }
+//         }
+//     },
+//     skills: {
+//         type: [String]
+//     }
+// },{timestamps: true});
+
+// export const User = mongoose.model("User", userSchema);
+// export default User;
+
 import mongoose from "mongoose";
 import validator from "validator";
 
@@ -60,19 +170,20 @@ const noSpace = (value) => {return !value.includes(" ")};
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: [true, "firstName is required!!"],
         trim: true,
+        required: [true, "firstName is required!!"],
         minLength: 4,
         maxLength: 15,
+        // select: false,
         validate: {
             validator: noSpace,
-            message: "no spaces are allowed"
+            message: "no spaces are allowed!!"
         }
     },
     lastName: {
         type: String,
-        required: [true, "lastName is required!!"],
         trim: true,
+        required: [true, "lastName is required!!"],
         minLength: 4,
         maxLength: 15,
         validate: {
@@ -82,83 +193,59 @@ const userSchema = new mongoose.Schema({
     },
     emailId: {
         type: String,
-        required: [true, "emailId are required!!"],
-        trim: true,
+        required: [true, "email is required!!"],
         unique: true,
-        validate: [{
-            validator: noSpace,
-            message: "no spaces are allowed!!"
-        },{
-            validator: function(value) {
-                if(!validator.isEmail(value)) {
-                    throw new Error("Email is not valid Email!!");
-                }
-            },
-            message: "Email is not a Valid Email!!"
-        }]
+        lowercase: true,
+        trim: true,
+        validate: {
+            validator: value => validator.isEmail(value),
+            message: "Invalid email!!"
+        }
     },
     password: {
         type: String,
         required: [true, "password is required!!"],
         trim: true,
-        validate: [
-            {validator: noSpace, message: "no spaces are allowed!!"},
-            {validator: function(value){
-                const hasLower = /[a-z]/.test(value);
-                const hasUpper = /[A-Z]/.test(value);
-                const hasNumber = /[0-9]/.test(value);
-                return hasLower && hasUpper && hasNumber;
-            }, message: "password must contain a lowercase and uppercase and a number character!!"},
-            {validator: function(value) {
-                if(!validator.isStrongPassword(value)) {
-                    throw new Error("Password is not strong!!")
-                }
-            },
-            message: "Password is not Strong!!"
+        select: false,
+        validate: {
+            validator: value => validator.isStrongPassword(value),
+            message: "password is not strong!!"
         }
-        ]
     },
     age: {
-        type: Number,
+        type: String,
         required: true,
-        min: 18,
-        max: 80,
-        validate: {
-            validator: function(age) {
-                return age > 18  && age < 80;
-            },
-            message: "age must be greater than 18 and smaller than 80"
-        }
+        min: [18, "age must be more than 18"],
+        max: [80, "age must be less than 80"]
     },
     gender: {
         type: String,
         required: true,
-        enum: ["male", "female", "others"],
-        validate: {
-            validator: function(value) {
-                const values = ["male", "female", "others"];
-                return values.includes(value);
-            },
-            message: "age must be male or female or others"
+        enum: {
+            values: ["male", "female", "others"],
+            message: "age must be male or female or others!!"
         }
     },
     about: {
         type: String,
-        default: "i am the batman and men are brave!!"
+        default: "men are brave!!"
     },
     profilePic: {
         type: String,
         default: "https://images.unsplash.com/photo-1763539818973-ffc4d0a78dae?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
-        validate(value) {
-            if(!validator.isURL(value)) {
-                throw new Error("url is not valid");
-            }
+        validate: {
+            validator: value => validator.isURL(value),
+            message: "url is not valid!!"
         }
     },
     skills: {
-        type: [String]
+        type: [String],
+        default: [],
     }
-},{timestamps: true});
+}, {timestamps: true});
+
+// module.exports = mongoose.model("User", userSchema);
+// export default User;
 
 export const User = mongoose.model("User", userSchema);
 export default User;
